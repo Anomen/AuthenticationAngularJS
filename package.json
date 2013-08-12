@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "Authentication In AngularJS",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "express": "3.3.5",
-    "ejs": "*"
+    "ejs": "*",
+    "passport": "*",
+    "passport-local": "*"
   }
 }
