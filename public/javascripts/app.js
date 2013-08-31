@@ -3,7 +3,7 @@
 /**********************************************************************
  * Angular Application
  **********************************************************************/
-var app = angular.module('app', ['ngResource'])
+var app = angular.module('app', ['ngResource', 'ngRoute'])
   .config(function($routeProvider, $locationProvider, $httpProvider) {
     //================================================
     // Check if the user is connected
@@ -16,12 +16,14 @@ var app = angular.module('app', ['ngResource'])
       $http.get('/loggedin').success(function(user){
         // Authenticated
         if (user !== '0')
-          $timeout(deferred.resolve, 0);
+          /*$timeout(deferred.resolve, 0);*/
+          deferred.resolve();
 
         // Not Authenticated
         else {
           $rootScope.message = 'You need to log in.';
-          $timeout(function(){deferred.reject();}, 0);
+          //$timeout(function(){deferred.reject();}, 0);
+          deferred.reject();
           $location.url('/login');
         }
       });
