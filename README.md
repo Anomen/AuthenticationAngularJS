@@ -5,4 +5,4 @@ This code is an example to create secured routes in AngularJS. To have more deta
 
 To run this example: 
 1. `npm install`
-2. `node app.js`
+2. `node index.js`

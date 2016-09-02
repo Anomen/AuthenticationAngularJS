@@ -1,13 +1,19 @@
 {
   "name": "AuthenticationInAngularJS",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "express": "3.3.5",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "ejs": "*",
+    "errorhandler": "^1.4.3",
+    "express": "*",
+    "express-session": "^1.14.1",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
     "passport": "*",
     "passport-local": "*"
   }
