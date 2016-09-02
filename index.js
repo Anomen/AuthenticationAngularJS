@@ -4,6 +4,12 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+let bodyParser      = require('body-parser');
+let cookieParser    = require('cookie-parser');
+let session         = require('express-session');
+let methodOverride  = require('method-override');
+var errorHandler    = require('errorhandler');
+
 //==================================================================
 // Define the strategy to be used by PassportJS
 passport.use(new LocalStrategy(
@@ -35,25 +41,30 @@ var auth = function(req, res, next){
 
 // Start express application
 var app = express();
+// let router      = express.Router();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.cookieParser()); 
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.session({ secret: 'securedsession' }));
+// app.use(express.favicon());
+// app.use(express.logger('dev'));
+app.use(cookieParser()); 
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(session({ 
+  secret: 'securedsession',
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(passport.initialize()); // Add passport initialization
 app.use(passport.session());    // Add passport initialization
-app.use(app.router);
+// app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorHandler());
 }
 
 //==================================================================
