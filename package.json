@@ -1,9 +1,9 @@
 {
   "name": "AuthenticationInAngularJS",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
