@@ -8,7 +8,8 @@ let bodyParser      = require('body-parser');
 let cookieParser    = require('cookie-parser');
 let session         = require('express-session');
 let methodOverride  = require('method-override');
-var errorHandler    = require('errorhandler');
+let errorHandler    = require('errorhandler');
+let morgan          = require('morgan');
 
 //==================================================================
 // Define the strategy to be used by PassportJS
@@ -41,14 +42,13 @@ var auth = function(req, res, next){
 
 // Start express application
 var app = express();
-// let router      = express.Router();
 
 // all environments
 app.set('port', process.env.PORT || 8000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 // app.use(express.favicon());
-// app.use(express.logger('dev'));
+app.use(morgan('dev'));
 app.use(cookieParser()); 
 app.use(bodyParser.json());
 app.use(methodOverride());

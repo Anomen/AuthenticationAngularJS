@@ -13,6 +13,7 @@
     "express": "*",
     "express-session": "^1.14.1",
     "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
     "passport": "*",
     "passport-local": "*"
   }
